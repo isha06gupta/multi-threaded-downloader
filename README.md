@@ -29,11 +29,40 @@ pip install requests tqdm
 
 ## Usage
 
+Download one URL:
+
 ```bash
-python advanced_downloader.py
+python multi_downloader.py --url https://example.com/file.zip
+```
+
+Download multiple URLs from a text file:
+
+```bash
+python multi_downloader.py --urls-file urls.txt
+```
+
+Use a custom output folder, thread count, chunk count, and retry count:
+
+```bash
+python multi_downloader.py --url https://example.com/file.zip --output downloads --threads 8 --chunks 4 --retries 5
 ```
 
 Files will be downloaded into a `downloads` folder.
+
+`urls.txt` should contain one URL per line. Blank lines and lines starting with `#` are ignored.
+
+---
+
+## CLI Options
+
+```text
+--url URL             Single URL to download
+--urls-file PATH      Text file containing one URL per line
+--output PATH         Download directory (default: downloads)
+--threads N           Maximum worker threads (default: 3)
+--chunks N            Chunk count for segmented downloads (default: 4)
+--retries N           Retry count (default: 3)
+```
 
 ---
 
@@ -53,7 +82,7 @@ sample-5s.mp4: Downloaded successfully in 1.21 seconds
 ## Project Structure
 
 ```
-advanced_downloader.py   -> Main script
+multi_downloader.py      -> Main script
 README.md                -> Documentation
 downloads/               -> Downloaded files (auto-created)
 ```
